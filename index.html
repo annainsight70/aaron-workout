@@ -272,19 +272,25 @@ const EX = {
   dips:{n:"Chair dip",t:"reps",rm:-2,m:"Arms",cue:["Hands on a steady chair, fingers forward","Bend elbows straight back, not out"],easy:"Dip with knees bent",hard:"Dip with legs straight"},
   // gym
   goblet:{n:"Goblet squat",t:"reps",load:1,m:"Legs",cue:["Hold a dumbbell at your chest","Elbows inside the knees at the bottom"],easy:"Box squat to a bench",hard:"Barbell back squat"},
-  dbbench:{n:"Dumbbell bench press",t:"reps",load:1,m:"Chest",cue:["Shoulder blades pulled back on the bench","Lower slowly to chest level, press up"],easy:"Machine chest press",hard:"Barbell bench press"},
+  dbbench:{n:"Dumbbell bench press",t:"reps",load:1,m:"Chest",cue:["Shoulder blades pulled back on the bench","Lower slowly to chest level, press up"],easy:"Lighter dumbbells, slower",hard:"Barbell bench press"},
   cablerow:{n:"Seated cable row",t:"reps",load:1,m:"Back",cue:["Sit tall, slight bend in the knees","Pull to your belly, squeeze the shoulder blades"],easy:"Lighter stack, slower",hard:"Single-arm cable row"},
   gplank:{n:"Plank",t:"time",m:"Core",cue:["Elbows under shoulders","Squeeze your glutes and breathe slowly"],easy:"Plank on your knees",hard:"Plank with shoulder taps"},
   bike:{n:"Bike or rower finisher",t:"time",fin:1,m:"Cardio",cue:["Steady pace you could still talk at","Last 30 s a little faster"],easy:"Easy pace the whole time",hard:"30 s hard, 30 s easy"},
-  rdl:{n:"Romanian deadlift",t:"reps",load:1,m:"Hamstrings and glutes",cue:["Soft knees, push your hips back","Weights close to your legs, flat back"],easy:"Kettlebell deadlift",hard:"Barbell Romanian deadlift"},
+  rdl:{n:"Romanian deadlift",t:"reps",load:1,m:"Hamstrings and glutes",cue:["Soft knees, push your hips back","Weights close to your legs, flat back"],easy:"Lighter weights, shorter range",hard:"Barbell Romanian deadlift"},
   pulldown:{n:"Lat pulldown",t:"reps",load:1,m:"Back",cue:["Hands a bit wider than shoulders","Pull the bar to your upper chest"],easy:"Lighter stack, slower",hard:"Assisted pull-up"},
-  ohp:{n:"Dumbbell shoulder press",t:"reps",load:1,m:"Shoulders",cue:["Seated, back on the bench","Press up until arms are straight, lower to ears"],easy:"Machine shoulder press",hard:"Standing dumbbell press"},
+  ohp:{n:"Dumbbell shoulder press",t:"reps",load:1,m:"Shoulders",cue:["Seated, back on the bench","Press up until arms are straight, lower to ears"],easy:"Seated, lighter dumbbells",hard:"Standing dumbbell press"},
   gdeadbug:{n:"Dead bug",t:"reps",per:1,rm:-2,m:"Core",cue:["Lower back pressed into the floor","Reach the opposite arm and leg out slowly"],easy:"Legs only",hard:"Hold a light plate overhead"},
   legpress:{n:"Leg press",t:"reps",load:1,m:"Legs",cue:["Feet shoulder width in the middle of the plate","Lower until knees reach about 90 degrees"],easy:"Shorter range",hard:"Single-leg press"},
-  incline:{n:"Incline dumbbell press",t:"reps",load:1,m:"Upper chest",cue:["Bench at a low incline","Lower to the top of the chest"],easy:"Machine incline press",hard:"Barbell incline press"},
+  incline:{n:"Incline dumbbell press",t:"reps",load:1,m:"Upper chest",cue:["Bench at a low incline","Lower to the top of the chest"],easy:"Lighter dumbbells, lower incline",hard:"Barbell incline press"},
   csrow:{n:"Chest-supported row",t:"reps",load:1,m:"Back",cue:["Chest on an incline bench","Row elbows back toward your hips"],easy:"Lighter dumbbells",hard:"Pause 1 s at the top"},
   hipthrust:{n:"Hip thrust",t:"reps",load:1,m:"Glutes",cue:["Upper back on a bench, bar on hips with a pad","Chin tucked, squeeze at the top"],easy:"Glute bridge on the floor",hard:"Pause 2 s at the top"},
-  facepull:{n:"Cable face pull",t:"reps",load:1,rm:2,m:"Rear shoulders",cue:["Rope at face height","Pull to your eyes, elbows high"],easy:"Band pull-apart",hard:"Slower, pause at the face"}
+  facepull:{n:"Cable face pull",t:"reps",load:1,rm:2,m:"Rear shoulders",cue:["Rope at face height","Pull to your eyes, elbows high"],easy:"Band pull-apart",hard:"Slower, pause at the face"},
+  // home gym: free weights and a bench, no cables or machines
+  dbrow:{n:"One-arm dumbbell row",t:"reps",per:1,load:1,m:"Back",cue:["One hand and knee on the bench, flat back","Pull the dumbbell to your hip, lower slowly"],easy:"Lighter dumbbell, slower",hard:"Pause 1 s at the top"},
+  bbrow:{n:"Bent-over barbell row",t:"reps",load:1,m:"Back",cue:["Hinge forward, flat back, soft knees","Pull the bar to your belly button"],easy:"Two-dumbbell row",hard:"Pause 1 s at the top"},
+  splitsq:{n:"Dumbbell split squat",t:"reps",per:1,load:1,m:"Legs",cue:["Long stance, dumbbells at your sides","Lower the back knee toward the floor, front heel down"],easy:"Split squat, no weights",hard:"Back foot up on the bench"},
+  rdfly:{n:"Rear delt fly",t:"reps",load:1,rm:2,m:"Rear shoulders",cue:["Hinge forward, light dumbbells hanging","Lift the arms out wide, squeeze the shoulder blades"],easy:"Lighter dumbbells",hard:"Pause 1 s at the top"},
+  hgcardio:{n:"Cardio finisher",t:"time",fin:1,m:"Cardio",cue:["Bike or rower if you have one, or high knees in place","Steady pace you could still talk at"],easy:"March in place",hard:"30 s hard, 30 s easy"}
 };
 
 const PLAN = {
@@ -297,11 +303,22 @@ const PLAN = {
     {id:"gA",name:"Squat and push",moves:["goblet","dbbench","cablerow","gplank","bike"]},
     {id:"gB",name:"Hinge and pull",moves:["rdl","pulldown","ohp","gdeadbug","bike"]},
     {id:"gC",name:"Full body",moves:["legpress","incline","csrow","hipthrust","facepull"]}
+  ],
+  homegym:[
+    {id:"fA",name:"Squat and push",moves:["goblet","dbbench","dbrow","gplank","hgcardio"]},
+    {id:"fB",name:"Hinge and pull",moves:["rdl","bbrow","ohp","gdeadbug","hgcardio"]},
+    {id:"fC",name:"Full body",moves:["splitsq","incline","csrow","hipthrust","rdfly"]}
   ]
+};
+const PLACES = {
+  home:{name:"Home",at:"at home",chip:"No equipment",ob:"At home",sub:"No equipment. A chair, a stair, a backpack."},
+  homegym:{name:"Home gym",at:"in your home gym",chip:"Free weights",ob:"Home gym",sub:"Dumbbells, a barbell and a bench. No cables or machines."},
+  gym:{name:"Gym",at:"at the gym",chip:"Gym",ob:"At the gym",sub:"Dumbbells, barbells, cables and machines."}
 };
 const WARM = {
   home:[["March in place",40],["Arm circles",30],["Hip circles",30],["Slow bodyweight squats",40]],
-  gym:[["Easy bike or treadmill",120],["Arm circles",30],["Hip circles",30],["Slow bodyweight squats",40]]
+  gym:[["Easy bike or treadmill",120],["Arm circles",30],["Hip circles",30],["Slow bodyweight squats",40]],
+  homegym:[["Brisk march or easy bike",120],["Arm circles",30],["Hip circles",30],["Slow bodyweight squats",40]]
 };
 const COOL = [["Hamstring stretch",40],["Chest stretch on a doorway",40],["Hip flexor stretch",40],["Slow breathing",30]];
 
@@ -329,7 +346,7 @@ const DAYS = ["M","T","W","T","F","S","S"];
 
 /* ===== State and storage ===== */
 const LS_KEY = "aaron-workout-v1";
-function blank(){return {v:1,profile:null,next:{home:0,gym:0},step:{},variant:{},lifts:{},up:{},sessions:[],weights:[],active:null,updatedAt:0}}
+function blank(){return {v:1,profile:null,next:{home:0,gym:0,homegym:0},step:{},variant:{},lifts:{},up:{},sessions:[],weights:[],active:null,updatedAt:0}}
 function loadLocal(){try{const s=JSON.parse(localStorage.getItem(LS_KEY));return s&&s.v===1?s:null}catch(e){return null}}
 function saveLocal(){try{localStorage.setItem(LS_KEY,JSON.stringify(S))}catch(e){}}
 let S = Object.assign(blank(), loadLocal()||{});
@@ -465,6 +482,7 @@ const ICON = {
   x:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>',
   play:'<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg>',
   home:'<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"><path d="M6 22L24 7l18 15"/><path d="M11 19v22h26V19"/><path d="M19 41V29h10v12"/></svg>',
+  homegym:'<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M17 24h14"/><rect x="9" y="15" width="8" height="18" rx="2"/><rect x="31" y="15" width="8" height="18" rx="2"/><path d="M5 20v8M43 20v8"/></svg>',
   gym:'<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M4 24h40"/><rect x="9" y="13" width="6" height="22" rx="2"/><rect x="33" y="13" width="6" height="22" rx="2"/><path d="M4 19v10M44 19v10"/></svg>'
 };
 
@@ -550,6 +568,11 @@ const FIG={
   facepull:{a:{hip:[96,76],t:-90,hand:[150,26],foot:[104,152],foot2:[86,152]},b:{hip:[96,76],t:-90,hand:[118,18],eb:-1,foot:[104,152],foot2:[86,152]},set:"facepull",back:[PR.cable(206,24)]}
 };
 FIG.gplank=FIG.plank;FIG.gdeadbug=FIG.deadbug;
+FIG.dbrow=Object.assign({},FIG.bagrow,{front:[PR.db]});
+FIG.bbrow=Object.assign({},FIG.bagrow,{front:[P=>disc(P.w,14)]});
+FIG.splitsq=Object.assign({},FIG.lunge,{front:[PR.db]});
+FIG.rdfly={a:{hip:[98,80],t:-25,hand:[142,128],foot:[112,152]},b:{hip:[98,80],t:-25,hand:[170,98],foot:[112,152]},front:[PR.db]};
+FIG.hgcardio={a:{hip:[118,78],t:-88,hand:[100,100],hand2:[140,64],foot:[138,122],foot2:[118,152]},b:{hip:[118,78],t:-88,hand:[140,64],hand2:[100,100],foot:[118,152],foot2:[138,122]}};
 function figInner(id,k){
   const F=FIG[id];if(!F)return "";
   const P=solve(mix(F.a,F.b,k));
@@ -603,11 +626,11 @@ function renderOnboarding(){
       <button class="btn go sm" data-a="code-load">Load my workouts</button></div></details>`:""}`;
   } else if(st===1){
     body=`${bar}<div class="eyebrow">Step 1 of 4</div><h2 class="ob-q">Where will you train?</h2>
-      <div class="choice two">
-        ${["home","gym"].map(p=>`<button class="opt big" data-a="ob-place" data-v="${p}" aria-pressed="${ob.place===p}">
-          <span class="ico">${ICON[p]}</span><b>${p==="home"?"At home":"At the gym"}</b><span>${p==="home"?"No equipment. A chair, a stair, a backpack.":"Dumbbells, cables and machines."}</span></button>`).join("")}
+      <div class="choice">
+        ${Object.keys(PLACES).map(p=>`<button class="opt big" data-a="ob-place" data-v="${p}" aria-pressed="${ob.place===p}">
+          <span class="ico">${ICON[p]}</span><b>${PLACES[p].ob}</b><span>${PLACES[p].sub}</span></button>`).join("")}
       </div>
-      <p class="muted small">You can switch between home and gym any day.</p>
+      <p class="muted small">You can switch any day.</p>
       <label class="f">Your first name<input class="in txt" id="ob-name" value="${esc(ob.name)}" autocomplete="given-name"></label>
       <button class="btn go full" data-a="ob-next">Next</button>`;
   } else if(st===2){
@@ -643,7 +666,7 @@ function renderOnboarding(){
     body=`${bar}<div class="eyebrow">Step 4 of 4</div><h2 class="ob-q">Your plan is ready, ${esc(ob.name)}</h2>
       <section class="mat fade">
         <div class="plate-bg">${plateSVG("--red",230)}</div>
-        <div class="eyebrow">First workout, ${ob.place==="home"?"at home":"at the gym"}</div>
+        <div class="eyebrow">First workout, ${PLACES[ob.place].at}</div>
         <h2 class="display">${esc(w.name)}</h2>
         <div class="meta"><span class="chip">${est} min</span><span class="chip">${w.moves.length} moves</span><span class="chip">${ob.days} per week</span></div>
         <div class="moves-peek">${lines}</div>
@@ -683,7 +706,7 @@ function renderMain(){
   </div></nav>`;
 }
 function placeSeg(){const pl=S.profile.place;return `<div class="seg" role="group" aria-label="Where are you training">
-  <button data-a="place" data-v="home" aria-pressed="${pl==="home"}">Home</button><button data-a="place" data-v="gym" aria-pressed="${pl==="gym"}">Gym</button></div>`}
+  ${Object.keys(PLACES).map(k=>`<button data-a="place" data-v="${k}" aria-pressed="${pl===k}">${PLACES[k].name}</button>`).join("")}</div>`}
 
 function renderToday(){
   const p=S.profile,pl=p.place,idx=S.next[pl]||0,w=workout(pl,idx);
@@ -696,7 +719,7 @@ function renderToday(){
   if(a){
     const aw=PLAN[a.place].find(x=>x.id===a.wid);const steps=stepsFor(a);
     hero=`<section class="mat fade"><div class="plate-bg">${plateSVG("--blue",230)}</div>
-      <div class="eyebrow">Paused, ${a.place==="home"?"at home":"at the gym"}</div>
+      <div class="eyebrow">Paused, ${PLACES[a.place].at}</div>
       <h2 class="display">${esc(aw.name)}</h2>
       <div class="meta"><span class="chip">Step ${Math.min(a.si+1,steps.length)} of ${steps.length}</span></div>
       <p style="color:var(--mat-muted)">You stopped part way. Pick up right where you left off.</p>
@@ -706,7 +729,7 @@ function renderToday(){
     hero=`<section class="mat fade"><div class="plate-bg">${plateSVG(PC[idx%4],230)}</div>
       <div class="eyebrow">${doneToday?"Done today. Next up":"Today"} · Workout ${"ABC"[idx]}</div>
       <h2 class="display">${esc(w.name)}</h2>
-      <div class="meta"><span class="chip">${estMin(w,pl)} min</span><span class="chip">${w.moves.length} moves</span><span class="chip">${pl==="home"?"No equipment":"Gym"}</span></div>
+      <div class="meta"><span class="chip">${estMin(w,pl)} min</span><span class="chip">${w.moves.length} moves</span><span class="chip">${PLACES[pl].chip}</span></div>
       <div class="moves-peek">${w.moves.map(id=>`<div><span>${esc(exName(id))}</span><span>${rxText(id)}</span></div>`).join("")}</div>
       <button class="btn go full" data-a="start" data-v="${idx}">${doneToday?"Train again":"Start workout"}</button></section>`;
   }
@@ -737,8 +760,8 @@ function renderPlan(){
       return `<div class="wk-item"><div class="thumb">${figSVG(id,1)}</div><div class="nm" style="flex:1">${esc(exName(id))}<div class="small muted">${esc(EX[id].m)}${EX[id].load&&S.lifts[id]?" · last "+fmtW(S.lifts[id]):""}</div></div>
       <div style="text-align:right;display:flex;flex-direction:column;align-items:flex-end;gap:4px"><span class="rx">${rxText(id)}</span>${up?`<span class="tag up">${EX[id].load&&S.up[id]?"Add weight":"Ready to level up"}</span>`:""}</div></div>`}).join("")}</div>
     <button class="btn ${i===nx?"go":"ghost"} sm" data-a="start" data-v="${i}">Start ${esc(w.name)}</button></section>`).join("");
-  return `<header class="top"><div class="hello"><span class="eyebrow">Your plan</span><h1>${pl==="home"?"Home":"Gym"}</h1></div>${placeSeg()}</header>
-    <p class="muted">Rotate A, B, C. Every workout starts with a ${pl==="home"?"2":"4"} minute warm-up and ends with a short stretch. After each session you tell the app how it felt, and the next one adjusts.</p>
+  return `<header class="top"><div class="hello"><span class="eyebrow">Your plan</span><h1>${PLACES[pl].name}</h1></div>${placeSeg()}</header>
+    <p class="muted">Rotate A, B, C. Every workout starts with a ${Math.round(WARM[pl].reduce((t,x)=>t+x[1],0)/60)} minute warm-up and ends with a short stretch. After each session you tell the app how it felt, and the next one adjusts.</p>
     ${cards}`;
 }
 
@@ -759,7 +782,7 @@ function renderProgress(){
   const first=p.startKg||(S.weights.length?S.weights[0].kg:p.weightKg), cur=S.weights.length?S.weights[S.weights.length-1].kg:p.weightKg;
   const diff=cur-first;
   const b=bmi(cur,p.heightCm);
-  const hist=S.sessions.slice().reverse().slice(0,25).map(s=>`<div><span><b>${esc(s.name)}</b><span class="muted small"> · ${s.place==="home"?"Home":"Gym"} · ${s.min} min</span></span><span class="when">${new Date(s.date+"T12:00:00").toLocaleDateString(undefined,{month:"short",day:"numeric"})}${s.feel?` <span class="tag">${esc(s.feel)}</span>`:""}</span></div>`).join("");
+  const hist=S.sessions.slice().reverse().slice(0,25).map(s=>`<div><span><b>${esc(s.name)}</b><span class="muted small"> · ${(PLACES[s.place]||PLACES.gym).name} · ${s.min} min</span></span><span class="when">${new Date(s.date+"T12:00:00").toLocaleDateString(undefined,{month:"short",day:"numeric"})}${s.feel?` <span class="tag">${esc(s.feel)}</span>`:""}</span></div>`).join("");
   const wUnit=isImp()?"lb":"kg";
   return `<header class="top"><div class="hello"><span class="eyebrow">Progress</span><h1>${esc(p.name)}</h1></div></header>
     <section class="card"><div class="card-head"><h3>Weight</h3><span class="small muted">${S.weights.length} check-in${S.weights.length===1?"":"s"}</span></div>
@@ -1037,7 +1060,7 @@ document.addEventListener("click",ev=>{
       S.profile={name:(ob.name||"Aaron").slice(0,40),weightKg:kg,startKg:kg,heightCm:cm,units:ob.units,goal:ob.goal,level:ob.level,place:ob.place,days:ob.days,since:today()};
       S.weights=[{date:today(),kg}];save();tab="today";render();window.scrollTo(0,0);break}
     case "tab":tab=v;confirmReset=false;render();window.scrollTo(0,0);break;
-    case "place":p.place=v;save();render();break;
+    case "place":if(!PLACES[v])return;p.place=v;save();render();break;
     case "start":if(S.active&&S.active.phase!=="finish"){toast("Finish or discard your paused workout first.");return}startWorkout(+v);break;
     case "resume":openPlayer();break;
     case "discard":S.active=null;save();render();break;
